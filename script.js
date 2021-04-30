@@ -1,10 +1,10 @@
 // script.js
+console.log("Hello World this is me!");
 const img = new Image(); // used to load image from <input> and draw to canvas
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
-  console.log("Hello World this is me!");
   
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
