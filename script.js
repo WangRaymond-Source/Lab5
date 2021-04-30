@@ -1,15 +1,21 @@
 // script.js
 
 const img = new Image(); // used to load image from <input> and draw to canvas
+//this is the canvas
 const canvas = document.getElementById("user-image");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
+  //prep the canvas 
   let ctx = canvas.getContext('2d');
+  //clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "black";
+  //fill the canvas with the color black
+  ctx.fillStyle = '#000000';
+  //fill the rectangle
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  //get dimensions
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
   // Some helpful tips:
