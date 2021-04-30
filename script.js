@@ -1,12 +1,12 @@
 // script.js
 
 const img = new Image(); // used to load image from <input> and draw to canvas
-console.log("Hello World");
-img.src = "https://github.com/WangRaymond-Source/Lab5/blob/main/images/mountains.jpg?raw=true";
+const canvas = document.getElementById("user-image");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
-  
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "black";
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
   // - Clear the form when a new image is selected
