@@ -1,7 +1,8 @@
 // script.js
-console.log("Hello World this is me!");
-const img = new Image(); // used to load image from <input> and draw to canvas
 
+const img = new Image(); // used to load image from <input> and draw to canvas
+console.log("Hello World");
+img.src = "https://github.com/WangRaymond-Source/Lab5/blob/main/images/mountains.jpg?raw=true";
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
