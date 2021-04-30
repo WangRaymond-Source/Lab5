@@ -6,6 +6,8 @@ const canvas = document.getElementById("user-image");
 img.addEventListener('load', () => {
   // TODO
   const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   ctx.fillStyle = "black";
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
