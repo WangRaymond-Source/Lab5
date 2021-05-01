@@ -13,8 +13,8 @@ img.addEventListener('load', () => {
   ctx.rect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#000000";
   ctx.fill();
-  subButton = disable;
-  textButton = enable;
+  subButton.disable = true;
+  textButton.disable = false;
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
   // Some helpful tips:
