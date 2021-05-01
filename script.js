@@ -3,7 +3,7 @@
 const img = new Image(); // used to load image from <input> and draw to canvas
 const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
-const addImgae = document.getElementById("image-input");
+const addImage = document.getElementById("image-input");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
@@ -22,9 +22,9 @@ img.addEventListener('load', () => {
   // - If you draw the image to canvas here, it will update as soon as a new image is selected
 });
 //add Image to canvas
-addImgae.addEventListener('change', () =>{
-  img.src = URL.createObjectURL(addImgae.files[0]);
-  img.alt = addImgae.file[0].name;
+addImage.addEventListener('change', () =>{
+  img.src = URL.createObjectURL(addImage.files[0]);
+  img.alt = addImage.files[0].name;
 });
 
 /**
