@@ -12,9 +12,9 @@ img.addEventListener('load', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   //fill the canvas with the color black
-  ctx.fillStyle = '#000000';
-  //fill the rectangle
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#000000";
+  //fill canvas
+  ctx.fill();
   //get dimensions
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
