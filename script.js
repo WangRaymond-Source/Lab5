@@ -6,6 +6,7 @@ const canvas = document.getElementById("user-image");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
+  console.log('page is fully loaded');
   //prep the canvas 
   let ctx = canvas.getContext('2d');
   //clear the canvas
