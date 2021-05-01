@@ -23,7 +23,7 @@ img.addEventListener('load', () => {
 });
 //add Image to canvas
 addImgae.addEventListener('change', () =>{
-  img.src = URL.createObjectURL(addImgae.file[0]);
+  img.src = URL.createObjectURL(addImgae.files[0]);
   img.alt = addImgae.file[0].name;
 });
 
