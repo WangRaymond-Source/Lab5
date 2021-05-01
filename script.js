@@ -4,9 +4,9 @@ const img = new Image(); // used to load image from <input> and draw to canvas
 const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
 const addImage = document.getElementById("image-input");
-const subButton = document.querySelector("[type='submit']");
-const resetButton = document.querySelector("[type='reset']");
-const readButton =  document.querySelector("[type='button']");
+const subButton = document.querySelector("[type='submit']"); //submit button
+const resetButton = document.querySelector("[type='reset']"); //reset
+const readButton =  document.querySelector("[type='button']"); //read button
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
@@ -19,9 +19,9 @@ img.addEventListener('load', () => {
   //fill
   ctx.fill();
   //disable and enable buttons
-  subButton.disabled = true;
-  resetButton.disabled = false;
-  readButton.disabled = false;
+  // subButton.disabled = true;
+  // resetButton.disabled = false;
+  // readButton.disabled = false;
   //draw the uploaded image onto the canvas
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
@@ -30,7 +30,7 @@ img.addEventListener('load', () => {
   // - Clear the form when a new image is selected
   // - If you draw the image to canvas here, it will update as soon as a new image is selected
 });
-//add Image to canvas
+//select and add Image to canvas
 addImage.addEventListener('change', () =>{
   img.src = URL.createObjectURL(addImage.files[0]);
   img.alt = addImage.files[0].name;
