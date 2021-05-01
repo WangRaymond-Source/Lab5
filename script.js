@@ -4,16 +4,17 @@ const img = new Image(); // used to load image from <input> and draw to canvas
 const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
 const addImage = document.getElementById("image-input");
+const subButton = document.querySelector("[type='submit']");
+const textButton = document.getElementById("button-group");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
-  console.log('page is fully loaded');
-  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.rect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#000000";
   ctx.fill();
-  
+  subButton = disable;
+  textButton = enable;
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
   // Some helpful tips:
