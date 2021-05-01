@@ -7,6 +7,7 @@ const addImage = document.getElementById("image-input");
 const subButton = document.querySelector("[type='submit']"); //submit button
 const resetButton = document.querySelector("[type='reset']"); //reset
 const readButton =  document.querySelector("[type='button']"); //read button
+const genMem = document.getElementById("generate-meme");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
@@ -18,10 +19,7 @@ img.addEventListener('load', () => {
   ctx.fillStyle = "#000000";
   //fill
   ctx.fill();
-  //disable and enable buttons
-  // subButton.disabled = true;
-  // resetButton.disabled = false;
-  // readButton.disabled = false;
+  
   //draw the uploaded image onto the canvas
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
@@ -36,6 +34,14 @@ addImage.addEventListener('change', () =>{
   img.alt = addImage.files[0].name;
 });
 
+genMem.addEventListener('submit', () =>{
+  //grab top Text
+  const topText = document.getElementById("text-top");
+  const botText = document.getElementById("text-bottom");
+  resetButton.disabled = false;
+  readButton.disabled = false;
+  subButton.disabled = true;
+});
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
  * dimensions of the image so that it fits perfectly into the Canvas and maintains aspect ratio
