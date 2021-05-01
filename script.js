@@ -9,12 +9,18 @@ const textButton = document.getElementById("button-group");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
+  //clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //add rect
   ctx.rect(0, 0, canvas.width, canvas.height);
+  //fill canvas with black
   ctx.fillStyle = "#000000";
+  //fill
   ctx.fill();
-  subButton.disable = true;
-  textButton.disable = false;
+  //disable and enable buttons
+  subButton.disabled = true;
+  textButton.disabled = false;
+  //draw the uploaded image onto the canvas
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
   // Some helpful tips:
