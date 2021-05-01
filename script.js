@@ -5,7 +5,8 @@ const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
 const addImage = document.getElementById("image-input");
 const subButton = document.querySelector("[type='submit']");
-const textButton = document.getElementById("button-group");
+const resetButton = document.querySelector("[type='reset']");
+const readButton =  document.querySelector("[type='button']");
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
@@ -19,7 +20,8 @@ img.addEventListener('load', () => {
   ctx.fill();
   //disable and enable buttons
   subButton.disabled = true;
-  textButton.disabled = false;
+  resetButton.disabled = false;
+  readButton.disabled = false;
   //draw the uploaded image onto the canvas
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
   ctx.drawImage(img, dim.startX, dim.startY, dim.width, dim.height);
