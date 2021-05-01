@@ -34,8 +34,9 @@ addImage.addEventListener('change', () =>{
   img.alt = addImage.files[0].name;
 });
 
-genMem.addEventListener('submit', () =>{
+genMem.addEventListener('submit', function(event){
   //grab top Text
+  event.preventDefault();
   const topText = document.getElementById("text-top");
   const botText = document.getElementById("text-bottom");
   console.log(topText);
