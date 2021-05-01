@@ -39,8 +39,8 @@ genMem.addEventListener('submit', function(event){
   event.preventDefault();
   const topText = document.getElementById("text-top");
   const botText = document.getElementById("text-bottom");
-  console.log(topText);
-  console.log(botText);
+  console.log(topText.value);
+  console.log(botText.value);
   resetButton.disabled = false;
   readButton.disabled = false;
   subButton.disabled = true;
