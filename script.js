@@ -5,9 +5,9 @@ const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
 const addImage = document.getElementById("image-input");
 const subButton = document.querySelector("[type='submit']"); //submit button
-const resetButton = document.querySelector("[type='reset']"); //reset
+const resetButton = document.querySelector("[type='reset']"); //reset/clear
 const readButton =  document.querySelector("[type='button']"); //read button
-const genMem = document.getElementById("generate-meme");
+const genMem = document.getElementById("generate-meme"); //gen Meme button
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
@@ -39,10 +39,17 @@ genMem.addEventListener('submit', function(event){
   event.preventDefault();
   const topText = document.getElementById("text-top");
   const botText = document.getElementById("text-bottom");
-  ctx.fillText(topText.value,canvas.width/2, canvas.height);
+  ctx.fillText(topText.value,canvas.width/2, 0);
   resetButton.disabled = false;
   readButton.disabled = false;
   subButton.disabled = true;
+});
+resetButton.addEventListener('click', () =>{
+  //clear canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  resetButton.disabled = true;
+  readButton.disabled = true;
+  subButton.disabled = false;
 });
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
