@@ -11,7 +11,7 @@ img.addEventListener('load', () => {
   //clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //make the canvas
-  context.rect(0, 0, canvas.width, canvas.height);
+  ctx.rect(0, 0, canvas.width, canvas.height);
   //fill the canvas with the color black
   ctx.fillStyle = "#000000";
   //fill canvas
