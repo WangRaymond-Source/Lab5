@@ -59,6 +59,20 @@ resetButton.addEventListener('click', () =>{
   readButton.disabled = true;
   subButton.disabled = false;
 });
+//drop down menu
+var option = speechSynthesis.getVoices();
+
+for(var i = 0; i < voices.length; i++) {
+    var option = document.createElement('option');
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+    if(voices[i].default) {
+      option.textContent += ' -- DEFAULT';
+    }
+    option.setAttribute('data-lang', voices[i].lang);
+    option.setAttribute('data-name', voices[i].name);
+    document.getElementById("voice-selection").appendChild(option);
+}
 readButton.addEventListener('click', () =>{
   // var speakText = window.speechSynthesis;
   // let topText = document.getElementById("text-top").value;
@@ -67,7 +81,11 @@ readButton.addEventListener('click', () =>{
   // var text2 = new SpeechSynthesisUtterance(botText);
   // speakText.speak(text1);
   // speakText.speak(text2);
+  var theVoice = document.querySelector("[value='none']");
+  console.log(theVoice);
 });
+
+
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
