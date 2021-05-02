@@ -34,7 +34,7 @@ addImage.addEventListener('change', () =>{
   img.alt = addImage.files[0].name;
 });
 //implement generate button
-genMem.addEventListener('submit', function(event){
+genMem.addEventListener('submit', (event) =>{
   event.preventDefault();
   let topText = document.getElementById("text-top");
   let botText = document.getElementById("text-bottom");
