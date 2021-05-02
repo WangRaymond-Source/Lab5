@@ -91,15 +91,15 @@ resetButton.addEventListener('click', () =>{
 });
 
 readButton.addEventListener('click', () =>{
-   var speakText = ;
-   let topText = document.getElementById("text-top").value;
-   let botText = document.getElementById("text-bottom").value;
-   var text1 = new SpeechSynthesisUtterance(topText);
-   var text2 = new SpeechSynthesisUtterance(botText);
-   speakText.speak(text1);
-   speakText.speak(text2);
-  var theVoice = document.querySelector("[value='none']");
-  console.log(theVoice);
+  //  var speakText = ;
+  //  let topText = document.getElementById("text-top").value;
+  //  let botText = document.getElementById("text-bottom").value;
+  //  var text1 = new SpeechSynthesisUtterance(topText);
+  //  var text2 = new SpeechSynthesisUtterance(botText);
+  //  speakText.speak(text1);
+  //  speakText.speak(text2);
+  // var theVoice = document.querySelector("[value='none']");
+  // console.log(theVoice);
 });
 
 
