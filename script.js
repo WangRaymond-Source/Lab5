@@ -8,6 +8,34 @@ const subButton = document.querySelector("[type='submit']"); //submit button
 const resetButton = document.querySelector("[type='reset']"); //reset/clear
 const readButton =  document.querySelector("[type='button']"); //read button
 const genMem = document.getElementById("generate-meme"); //gen Meme button
+
+//drop down menu
+function populateVoiceList() {
+  if(typeof speechSynthesis === 'undefined') {
+    return;
+  }
+
+  var voices = speechSynthesis.getVoices();
+
+  for(var i = 0; i < voices.length; i++) {
+    var option = document.createElement('option');
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+    if(voices[i].default) {
+      option.textContent += ' -- DEFAULT';
+    }
+
+    option.setAttribute('data-lang', voices[i].lang);
+    option.setAttribute('data-name', voices[i].name);
+    document.getElementById("voice-selection").appendChild(option);
+  }
+}
+
+populateVoiceList();
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   resetButton.disabled = true;
@@ -59,32 +87,7 @@ resetButton.addEventListener('click', () =>{
   readButton.disabled = true;
   subButton.disabled = false;
 });
-//drop down menu
-function populateVoiceList() {
-  if(typeof speechSynthesis === 'undefined') {
-    return;
-  }
 
-  var voices = speechSynthesis.getVoices();
-
-  for(var i = 0; i < voices.length; i++) {
-    var option = document.createElement('option');
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-
-    if(voices[i].default) {
-      option.textContent += ' -- DEFAULT';
-    }
-
-    option.setAttribute('data-lang', voices[i].lang);
-    option.setAttribute('data-name', voices[i].name);
-    document.getElementById("voice-selection").appendChild(option);
-  }
-}
-
-populateVoiceList();
-if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
-  speechSynthesis.onvoiceschanged = populateVoiceList;
-}
 readButton.addEventListener('click', () =>{
   // var speakText = window.speechSynthesis;
   // let topText = document.getElementById("text-top").value;
