@@ -8,14 +8,13 @@ const subButton = document.querySelector("[type='submit']"); //submit button
 const resetButton = document.querySelector("[type='reset']"); //reset/clear
 const readButton =  document.querySelector("[type='button']"); //read button
 const genMem = document.getElementById("generate-meme"); //gen Meme button
-
+const voiceMenu = document.getElementById("voice-selection");
 //drop down menu
 function populateVoiceList() {
-  if(typeof speechSynthesis === 'undefined') {
-    return;
-  }
 
-  var voices = speechSynthesis.getVoices();
+  var voices = window.speechSynthesis.getVoices();
+  //enable drop down menu
+  voiceMenu.disabled = false;
 
   for(var i = 0; i < voices.length; i++) {
     var option = document.createElement('option');
@@ -24,17 +23,14 @@ function populateVoiceList() {
     if(voices[i].default) {
       option.textContent += ' -- DEFAULT';
     }
-
     option.setAttribute('data-lang', voices[i].lang);
     option.setAttribute('data-name', voices[i].name);
-    document.getElementById("voice-selection").appendChild(option);
+    voiceMenu.appendChild(option);
   }
 }
 
 populateVoiceList();
-if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
-  speechSynthesis.onvoiceschanged = populateVoiceList;
-}
+
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
