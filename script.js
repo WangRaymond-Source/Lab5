@@ -13,20 +13,21 @@ const voiceMenu = document.getElementById("voice-selection");
 function populateVoiceList() {
 
   var voices = window.speechSynthesis.getVoices();
+  console.log(voices);
   //enable drop down menu
-  voiceMenu.disabled = false;
+  //voiceMenu.disabled = false;
 
-  for(var i = 0; i < voices.length; i++) {
-    var option = document.createElement('option');
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+  // for(var i = 0; i < voices.length; i++) {
+  //   var option = document.createElement('option');
+  //   option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
 
-    if(voices[i].default) {
-      option.textContent += ' -- DEFAULT';
-    }
-    option.setAttribute('data-lang', voices[i].lang);
-    option.setAttribute('data-name', voices[i].name);
-    voiceMenu.appendChild(option);
-  }
+  //   if(voices[i].default) {
+  //     option.textContent += ' -- DEFAULT';
+  //   }
+  //   option.setAttribute('data-lang', voices[i].lang);
+  //   option.setAttribute('data-name', voices[i].name);
+  //   voiceMenu.appendChild(option);
+  // }
 }
 
 populateVoiceList();
