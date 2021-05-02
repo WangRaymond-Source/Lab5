@@ -16,7 +16,7 @@ img.addEventListener('load', () => {
   //fill canvas with black
   ctx.fillStyle = "#000000";
   //fill
-  ctx.fillRect(0,0,canvas,width, canvas,height);
+  ctx.fillRect(0,0,canvas.width, canvas.filesheight);
   
   //draw the uploaded image onto the canvas
   let dim = getDimmensions(canvas.width,canvas.height, img.width, img.height);
