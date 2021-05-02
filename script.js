@@ -35,10 +35,9 @@ addImage.addEventListener('change', () =>{
 });
 //implement generate button
 genMem.addEventListener('submit', function(event){
-  //grab top Text
   event.preventDefault();
-  const topText = document.getElementById("text-top");
-  const botText = document.getElementById("text-bottom");
+  let topText = document.getElementById("text-top");
+  let botText = document.getElementById("text-bottom");
   //implement the text to the canvas
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
