@@ -60,18 +60,30 @@ resetButton.addEventListener('click', () =>{
   subButton.disabled = false;
 });
 //drop down menu
-var option = speechSynthesis.getVoices();
+function populateVoiceList() {
+  if(typeof speechSynthesis === 'undefined') {
+    return;
+  }
 
-for(var i = 0; i < voices.length; i++) {
+  var voices = speechSynthesis.getVoices();
+
+  for(var i = 0; i < voices.length; i++) {
     var option = document.createElement('option');
     option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
 
     if(voices[i].default) {
       option.textContent += ' -- DEFAULT';
     }
+
     option.setAttribute('data-lang', voices[i].lang);
     option.setAttribute('data-name', voices[i].name);
     document.getElementById("voice-selection").appendChild(option);
+  }
+}
+
+populateVoiceList();
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 readButton.addEventListener('click', () =>{
   // var speakText = window.speechSynthesis;
