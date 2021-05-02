@@ -39,7 +39,7 @@ genMem.addEventListener('submit', (event) =>{
   //implement the text to the canvas
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#FFFFFF";
   ctx.strokeText(topText.value, canvas.width/2, 48);
   ctx.strokeText(botText.value, canvas.width/2, canvas.height - 20);
 
