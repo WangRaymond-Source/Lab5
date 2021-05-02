@@ -30,7 +30,7 @@ function populateVoiceList() {
     voiceMenu.appendChild(option);
   }
   
-  console.log(voiceMenu);
+  console.log(voiceMenu[0]);
 }
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
