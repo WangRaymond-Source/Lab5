@@ -29,8 +29,8 @@ function populateVoiceList() {
     option.setAttribute('data-name', voices[i].name);
     voiceMenu.appendChild(option);
   }
-  voiceMenu.remove(voiceMenu.option[0]);
-  console.log(voices);
+  
+  console.log(voiceMenu);
 }
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -91,13 +91,13 @@ resetButton.addEventListener('click', () =>{
 });
 
 readButton.addEventListener('click', () =>{
-  // var speakText = window.speechSynthesis;
-  // let topText = document.getElementById("text-top").value;
-  // let botText = document.getElementById("text-bottom").value;
-  // var text1 = new SpeechSynthesisUtterance(topText);
-  // var text2 = new SpeechSynthesisUtterance(botText);
-  // speakText.speak(text1);
-  // speakText.speak(text2);
+   var speakText = ;
+   let topText = document.getElementById("text-top").value;
+   let botText = document.getElementById("text-bottom").value;
+   var text1 = new SpeechSynthesisUtterance(topText);
+   var text2 = new SpeechSynthesisUtterance(botText);
+   speakText.speak(text1);
+   speakText.speak(text2);
   var theVoice = document.querySelector("[value='none']");
   console.log(theVoice);
 });
