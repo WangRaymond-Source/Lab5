@@ -29,12 +29,13 @@ function populateVoiceList() {
     option.setAttribute('data-name', voices[i].name);
     voiceMenu.appendChild(option);
   }
+  voiceMenu.remove(voiceMenu.option[0]);
   console.log(voices);
 }
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
 }
-//populateVoiceList();
+
 
 
 // Fires whenever the img object loads a new image (such as with img.src =)
