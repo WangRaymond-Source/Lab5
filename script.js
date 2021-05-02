@@ -33,17 +33,23 @@ addImage.addEventListener('change', () =>{
   img.src = URL.createObjectURL(addImage.files[0]);
   img.alt = addImage.files[0].name;
 });
-
+//implement generate button
 genMem.addEventListener('submit', function(event){
   //grab top Text
   event.preventDefault();
   const topText = document.getElementById("text-top");
   const botText = document.getElementById("text-bottom");
-  ctx.fillText(topText.value,canvas.width/2, 0);
+  //implement the text to the canvas
+  ctx.font = "30px Arial"
+  ctx.textAlign = "center";
+  ctx.fillText(topText.value, canvas.width, canvas.height);
+  ctx.fillText(botText.value, canvas.width, canvas.height);
+
   resetButton.disabled = false;
   readButton.disabled = false;
   subButton.disabled = true;
 });
+//clears the canvas and reset meme generator
 resetButton.addEventListener('click', () =>{
   //clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -51,6 +57,10 @@ resetButton.addEventListener('click', () =>{
   readButton.disabled = true;
   subButton.disabled = false;
 });
+readButton.addEventListener('click', () =>{
+
+});
+
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
  * dimensions of the image so that it fits perfectly into the Canvas and maintains aspect ratio
