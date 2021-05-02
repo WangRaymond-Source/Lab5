@@ -40,8 +40,8 @@ genMem.addEventListener('submit', (event) =>{
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
   ctx.fillStyle = "#FFFFFF";
-  ctx.strokeText(topText.value, canvas.width/2, 48);
-  ctx.strokeText(botText.value, canvas.width/2, canvas.height - 20);
+  ctx.fillText(topText.value, canvas.width/2, 48);
+  ctx.fillText(botText.value, canvas.width/2, canvas.height - 20);
 
   resetButton.disabled = false;
   readButton.disabled = false;
