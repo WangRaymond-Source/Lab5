@@ -43,7 +43,7 @@ genMem.addEventListener('submit', (event) =>{
   ctx.textAlign = "center";
   ctx.fillStyle = "white";
   ctx.strokeText(topText.value, canvas.width/2, 48);
-  ctx.strokeText(botText.value, canvas.width/2, canvas.height);
+  ctx.strokeText(botText.value, canvas.width/2, canvas.height - 20);
 
   resetButton.disabled = false;
   readButton.disabled = false;
