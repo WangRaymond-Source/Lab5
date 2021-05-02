@@ -13,8 +13,6 @@ img.addEventListener('load', () => {
   // TODO
   //clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //add rect
-  ctx.rect(0, 0, canvas.width, canvas.height);
   //fill canvas with black
   ctx.fillStyle = "#000000";
   //fill
