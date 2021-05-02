@@ -42,7 +42,7 @@ genMem.addEventListener('submit', (event) =>{
   //implement the text to the canvas
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
-  ctx.strokeSytle = "white";
+  ctx.strokeSytle = "#FFFFFF";
   //*****come back to thius! */
   ctx.strokeText(topText.value, canvas.width/2, 48);
   ctx.strokeText(botText.value, canvas.width/2, canvas.height - 20);
@@ -60,7 +60,13 @@ resetButton.addEventListener('click', () =>{
   subButton.disabled = false;
 });
 readButton.addEventListener('click', () =>{
-  let speak = new SpeechSynthesis
+  var speakText = window.speechSynthesis;
+  let topText = document.getElementById("text-top").value;
+  let botText = document.getElementById("text-bottom").value;
+  var text1 = new SpeechSynthesisUtterance(topText);
+  var text2 = new SpeechSynthesisUtterance(botText);
+  speakText.speak(text1);
+  speakText.speak(text2);
 });
 
 /**
