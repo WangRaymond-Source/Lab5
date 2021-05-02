@@ -40,10 +40,10 @@ genMem.addEventListener('submit', function(event){
   const topText = document.getElementById("text-top");
   const botText = document.getElementById("text-bottom");
   //implement the text to the canvas
-  ctx.font = "30px Arial";
+  ctx.font = "48px Arial";
   ctx.textAlign = "center";
-  ctx.strokeText(topText.value, canvas.width/2, 30);
-  ctx.strokeText(botText.value, canvas.width/2, canvas.height - 30);
+  ctx.strokeText(topText.value, canvas.width/2, 48);
+  ctx.strokeText(botText.value, canvas.width/2, canvas.height - 48);
 
   resetButton.disabled = false;
   readButton.disabled = false;
