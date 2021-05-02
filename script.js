@@ -10,7 +10,10 @@ const readButton =  document.querySelector("[type='button']"); //read button
 const genMem = document.getElementById("generate-meme"); //gen Meme button
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
-  // TODO
+  resetButton.disabled = true;
+  readButton.disabled = true;
+  subButton.disabled = false;
+
   //clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //fill canvas with black
@@ -39,8 +42,8 @@ genMem.addEventListener('submit', (event) =>{
   //implement the text to the canvas
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
-  ctx.setStrokeColor("white");
-
+  ctx.strokeSytle = "white";
+  //*****come back to thius! */
   ctx.strokeText(topText.value, canvas.width/2, 48);
   ctx.strokeText(botText.value, canvas.width/2, canvas.height - 20);
 
@@ -57,7 +60,7 @@ resetButton.addEventListener('click', () =>{
   subButton.disabled = false;
 });
 readButton.addEventListener('click', () =>{
-
+  let speak = new SpeechSynthesis
 });
 
 /**
