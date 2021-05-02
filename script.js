@@ -15,7 +15,7 @@ function populateVoiceList() {
   var voices = window.speechSynthesis.getVoices();
   //enable drop down menu
   voiceMenu.disabled = false;
-  voiceSelect.options[0] = null;
+  voiceMenu.options[0] = null;
   for(var i = 0; i < voices.length; i++) {
     var option = document.createElement('option');
     option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
