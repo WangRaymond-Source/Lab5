@@ -41,8 +41,9 @@ genMem.addEventListener('submit', function(event){
   //implement the text to the canvas
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
-  ctx.strokeText(topText.value, ctx.canvas.width/2, 48);
-  ctx.strokeText(botText.value, ctxcanvas.width/2, ctx.canvas.height - 10);
+  ctx.fillStyle = "white";
+  ctx.strokeText(topText.value, canvas.width/2, 48);
+  ctx.strokeText(botText.value, canvas.width/2, canvas.height);
 
   resetButton.disabled = false;
   readButton.disabled = false;
