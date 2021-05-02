@@ -11,11 +11,13 @@ const genMem = document.getElementById("generate-meme"); //gen Meme button
 const voiceMenu = document.getElementById("voice-selection");
 //drop down menu
 function populateVoiceList() {
-
-  var voices = window.speechSynthesis.getVoices();
+  if(typeof speechSynthesis === 'undefined') {
+    return;
+  }
+  var voices = speechSynthesis.getVoices();
   //enable drop down menu
   voiceMenu.disabled = false;
-  voiceMenu.options[0] = null;
+
   for(var i = 0; i < voices.length; i++) {
     var option = document.createElement('option');
     option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
@@ -29,8 +31,10 @@ function populateVoiceList() {
   }
   console.log(voices);
 }
-
-populateVoiceList();
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+//populateVoiceList();
 
 
 // Fires whenever the img object loads a new image (such as with img.src =)
