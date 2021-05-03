@@ -33,7 +33,6 @@ function populateVoiceList() {
     voiceMenu.appendChild(option);
   }
   voiceMenu.remove(0);
-  console.log(voiceMenu.value);
 }
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -100,19 +99,16 @@ readButton.addEventListener('click', () =>{
   let topText = document.getElementById("text-top").value;
   let botText = document.getElementById("text-bottom").value;
   var text = new SpeechSynthesisUtterance(topText + botText);
-  text.volume = volumeRange.value;
+  text.volume = volumeRange.value/100;
   for(var i = 0; i < voices.length; i++){
-    if(voices[i].name === voiceMenu.name) {
+    if(voices[i].name === voiceMenu.options[voiceMenu.selectedIndex].getAttribute("data-name")) {
       text.voice = voices[i];
     }
   }
-  // text.voice = voices[voiceMenu.value];
-  // console.log(voiceMenu.value);
   window.speechSynthesis.speak(text);
   
 });
 volumeRange.addEventListener('input', () =>{
-  //console.log(volumeRange.value);
   if(volumeRange.value >= 67 && volumeRange.value <= 100 ){
     volumeSection.getElementsByTagName("img")[0].src = "icons/volume-level-3.svg";
     volumeSection.getElementsByTagName("img")[0].alt = "volume level 3";
