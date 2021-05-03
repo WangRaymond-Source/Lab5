@@ -102,7 +102,7 @@ readButton.addEventListener('click', () =>{
   var text = new SpeechSynthesisUtterance(topText + botText);
   text.volume = volumeRange.value;
   for(var i = 0; i < voices.length; i++){
-    if(voices[i].name === voiceMenu[0].getAttribute('data-name')) {
+    if(voices[i].name === voiceMenu.value.getAttribute('data-name')) {
       text.voice = voices[i];
     }
   }
