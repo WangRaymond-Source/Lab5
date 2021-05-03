@@ -11,12 +11,13 @@ const genMem = document.getElementById("generate-meme"); //gen Meme button
 const voiceMenu = document.getElementById("voice-selection");
 const volumeRange = document.querySelector("[type='range']");
 const volumeSection = document.getElementById("volume-group");
+var voices;
 //drop down menu
 function populateVoiceList() {
   if(typeof speechSynthesis === 'undefined') {
     return;
   }
-  var voices = speechSynthesis.getVoices();
+  voices = speechSynthesis.getVoices();
   //enable drop down menu
   voiceMenu.disabled = false;
 
@@ -32,7 +33,7 @@ function populateVoiceList() {
     voiceMenu.appendChild(option);
   }
   voiceMenu.remove(0);
-  console.log(voiceMenu[0].value);
+  console.log(voiceMenu.value);
 }
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -74,10 +75,13 @@ genMem.addEventListener('submit', (event) =>{
   //implement the text to the canvas
   ctx.font = "48px Arial";
   ctx.textAlign = "center";
-  ctx.strokeStyle = "#FFFFFF";
-  //*****come back to thius! */
+  ctx.fillStyle = "white";
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 5;
   ctx.strokeText(topText.value, canvas.width/2, 48);
   ctx.strokeText(botText.value, canvas.width/2, canvas.height - 20);
+  ctx.fillText(topText.value, canvas.width/2, 48);
+  ctx.fillText(botText.value, canvas.width/2, canvas.height - 20);
 
   resetButton.disabled = false;
   readButton.disabled = false;
@@ -93,22 +97,34 @@ resetButton.addEventListener('click', () =>{
 });
 
 readButton.addEventListener('click', () =>{
-  
   let topText = document.getElementById("text-top").value;
   let botText = document.getElementById("text-bottom").value;
-  var text = new SpeechSynthesisUtterance(topText + botText);
+  var text = new SpeechSynthesisUtterance(topText);
+  text.volume = volumeRange.value;
+  for(var i = 0; i < voices.length; i++){
+    if(voices[i].name === voiceMenu.getAttribute('data-name')) {
+      text.voice = voices[i];
+    }
+  }
+  // text.voice = voices[voiceMenu.value];
+  // console.log(voiceMenu.value);
+  window.speechSynthesis.speak(text);
   
 });
 volumeRange.addEventListener('input', () =>{
-  console.log(volumeSection.getElementsByTagName("img")[0].src);
-  if(volumeRange.value >= 67 || volumeRange.value <= 100 ){
-    volumeSection.getElementsByTagName("img")[0].src = "volume-level-3.svg";
-  }else if(volumeRange.value >= 34 || volumeRange.value <= 66 ){
-    volumeSection.getElementsByTagName("img")[0].src = "volume-level-2.svg";
-  }else if(volumeRange.value >= 1 || volumeRange.value <= 33 ){
-    volumeSection.getElementsByTagName("img")[0].src = "volume-level-1.svg";
+  //console.log(volumeRange.value);
+  if(volumeRange.value >= 67 && volumeRange.value <= 100 ){
+    volumeSection.getElementsByTagName("img")[0].src = "icons/volume-level-3.svg";
+    volumeSection.getElementsByTagName("img")[0].alt = "volume level 3";
+  }else if(volumeRange.value >= 34 && volumeRange.value <= 66 ){
+    volumeSection.getElementsByTagName("img")[0].src = "icons/volume-level-2.svg";
+    volumeSection.getElementsByTagName("img")[0].alt = "volume level 2";
+  }else if(volumeRange.value >= 1 && volumeRange.value <= 33 ){
+    volumeSection.getElementsByTagName("img")[0].src = "icons/volume-level-1.svg";
+    volumeSection.getElementsByTagName("img")[0].alt = "volume level 1";
   }else{
-    volumeSection.getElementsByTagName("img")[0].src = "volume-level-0.svg";
+    volumeSection.getElementsByTagName("img")[0].src = "icons/volume-level-0.svg";
+    volumeSection.getElementsByTagName("img")[0].alt = "volume level 0";
   }
 });
 
