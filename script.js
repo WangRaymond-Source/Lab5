@@ -99,10 +99,10 @@ resetButton.addEventListener('click', () =>{
 readButton.addEventListener('click', () =>{
   let topText = document.getElementById("text-top").value;
   let botText = document.getElementById("text-bottom").value;
-  var text = new SpeechSynthesisUtterance(topText);
+  var text = new SpeechSynthesisUtterance(topText + botText);
   text.volume = volumeRange.value;
   for(var i = 0; i < voices.length; i++){
-    if(voices[i].name === voiceMenu.getAttribute('data-name')) {
+    if(voices[i].name === voiceMenu[0].getAttribute('data-name')) {
       text.voice = voices[i];
     }
   }
