@@ -9,6 +9,8 @@ const resetButton = document.querySelector("[type='reset']"); //reset/clear
 const readButton =  document.querySelector("[type='button']"); //read button
 const genMem = document.getElementById("generate-meme"); //gen Meme button
 const voiceMenu = document.getElementById("voice-selection");
+const volumeRange = document.querySelector("[type='range']");
+const volumeSection = document.getElementById("volume-group");
 //drop down menu
 function populateVoiceList() {
   if(typeof speechSynthesis === 'undefined') {
@@ -29,8 +31,8 @@ function populateVoiceList() {
     option.setAttribute('data-name', voices[i].name);
     voiceMenu.appendChild(option);
   }
-  
-  console.log(voiceMenu[1]);
+  voiceMenu.remove(0);
+  console.log(voiceMenu[0].value);
 }
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -91,17 +93,24 @@ resetButton.addEventListener('click', () =>{
 });
 
 readButton.addEventListener('click', () =>{
-  //  var speakText = ;
-  //  let topText = document.getElementById("text-top").value;
-  //  let botText = document.getElementById("text-bottom").value;
-  //  var text1 = new SpeechSynthesisUtterance(topText);
-  //  var text2 = new SpeechSynthesisUtterance(botText);
-  //  speakText.speak(text1);
-  //  speakText.speak(text2);
-  // var theVoice = document.querySelector("[value='none']");
-  // console.log(theVoice);
+  
+  let topText = document.getElementById("text-top").value;
+  let botText = document.getElementById("text-bottom").value;
+  var text = new SpeechSynthesisUtterance(topText + botText);
+  
 });
-
+volumeRange.addEventListener('input', () =>{
+  console.log(volumeSection.getElementsByTagName("img")[0].src);
+  if(volumeRange.value >= 67 || volumeRange.value <= 100 ){
+    volumeSection.getElementsByTagName("img")[0].src = "volume-level-3.svg";
+  }else if(volumeRange.value >= 34 || volumeRange.value <= 66 ){
+    volumeSection.getElementsByTagName("img")[0].src = "volume-level-2.svg";
+  }else if(volumeRange.value >= 1 || volumeRange.value <= 33 ){
+    volumeSection.getElementsByTagName("img")[0].src = "volume-level-1.svg";
+  }else{
+    volumeSection.getElementsByTagName("img")[0].src = "volume-level-0.svg";
+  }
+});
 
 
 /**
